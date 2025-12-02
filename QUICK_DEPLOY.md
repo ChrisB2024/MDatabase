@@ -36,9 +36,10 @@ git push -u origin main
 4. Select your `mdatabase` repository
 5. Add environment variables:
    ```
-   DATABASE_URL=postgresql://postgres.yvwzaurkkryibinrcktz:@conQuest7503$@aws-0-us-west-2.pooler.supabase.com:5432/postgres
+   DATABASE_URL=postgresql://postgres:YOUR_PASSWORD@db.yvwzaurkkryibinrcktz.supabase.co:5432/postgres
    API_KEY=a8HHKtdn5tJLE3D9K9l5Tj_Z2OjCuO4TsAxicmhkjBQ
    ```
+   **⚠️ IMPORTANT**: Replace `YOUR_PASSWORD` with your Supabase password. Use Direct URI, not Session Pooler!
 6. Root directory: `backend`
 7. Click "Deploy"
 8. Copy your Railway URL (e.g., `https://mdatabase-production.railway.app`)
@@ -96,10 +97,11 @@ Visit your Vercel URL and test:
 
 ### Backend (Railway/Render)
 ```bash
-DATABASE_URL=postgresql://postgres.yvwzaurkkryibinrcktz:@conQuest7503$@aws-0-us-west-2.pooler.supabase.com:5432/postgres
+DATABASE_URL=postgresql://postgres:YOUR_PASSWORD@db.yvwzaurkkryibinrcktz.supabase.co:5432/postgres
 API_KEY=a8HHKtdn5tJLE3D9K9l5Tj_Z2OjCuO4TsAxicmhkjBQ
 CORS_ORIGINS=https://your-app.vercel.app
 ```
+**Note**: Use Direct Connection URI for stable production deployment. See `DATABASE_CONNECTION_FIX.md`
 
 ### Frontend (Vercel)
 ```bash

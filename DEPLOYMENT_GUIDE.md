@@ -96,10 +96,15 @@ vercel
 
 4. **Add Environment Variables** in Railway Dashboard:
    ```
-   DATABASE_URL=postgresql://postgres.yvwzaurkkryibinrcktz:@conQuest7503$@aws-0-us-west-2.pooler.supabase.com:5432/postgres
+   DATABASE_URL=postgresql://postgres:YOUR_PASSWORD@db.yvwzaurkkryibinrcktz.supabase.co:5432/postgres
    API_KEY=a8HHKtdn5tJLE3D9K9l5Tj_Z2OjCuO4TsAxicmhkjBQ
    CORS_ORIGINS=https://your-app.vercel.app
    ```
+   
+   **⚠️ IMPORTANT**: Use the **Direct Connection URI**, not the Session Pooler!
+   - Replace `YOUR_PASSWORD` with your actual Supabase password
+   - Host should be `db.yvwzaurkkryibinrcktz.supabase.co` (not pooler)
+   - See `DATABASE_CONNECTION_FIX.md` for details
 
 5. **Create Railway Start Script**:
    Create `backend/railway.json`:
