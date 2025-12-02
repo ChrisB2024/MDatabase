@@ -56,7 +56,7 @@ def get_pay_runs(
     return pay_runs
 
 
-@router.get("/{pay_run_id}", response_model=PayRunSchema)
+@router.get("/{pay_run_id}/", response_model=PayRunSchema)
 def get_pay_run(pay_run_id: int, db: Session = Depends(get_db)):
     """
     Get a specific pay run by ID
@@ -111,7 +111,7 @@ def create_pay_run(pay_run_data: PayRunCreate, db: Session = Depends(get_db)):
         )
 
 
-@router.put("/{pay_run_id}", response_model=PayRunSchema)
+@router.put("/{pay_run_id}/", response_model=PayRunSchema)
 def update_pay_run(
     pay_run_id: int,
     pay_run_update: PayRunUpdate,
@@ -144,7 +144,7 @@ def update_pay_run(
     return db_pay_run
 
 
-@router.delete("/{pay_run_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{pay_run_id}/", status_code=status.HTTP_204_NO_CONTENT)
 def delete_pay_run(pay_run_id: int, db: Session = Depends(get_db)):
     """
     Delete a pay run
@@ -172,7 +172,7 @@ def delete_pay_run(pay_run_id: int, db: Session = Depends(get_db)):
     return None
 
 
-@router.post("/{pay_run_id}/recalculate", response_model=PayRunSchema)
+@router.post("/{pay_run_id}/recalculate/", response_model=PayRunSchema)
 def recalculate_pay_run(pay_run_id: int, db: Session = Depends(get_db)):
     """
     Recalculate an existing pay run
@@ -220,7 +220,7 @@ def recalculate_pay_run(pay_run_id: int, db: Session = Depends(get_db)):
         )
 
 
-@router.post("/approve", response_model=List[PayRunSchema])
+@router.post("/approve/", response_model=List[PayRunSchema])
 def approve_pay_runs(bulk_update: BulkPaymentUpdate, db: Session = Depends(get_db)):
     """
     Approve and mark multiple pay runs as paid
