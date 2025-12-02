@@ -49,7 +49,7 @@ def get_work_hours(
     return work_hours
 
 
-@router.get("/{record_id}", response_model=WorkHoursSchema)
+@router.get("/{record_id}/", response_model=WorkHoursSchema)
 def get_work_hour(record_id: int, db: Session = Depends(get_db)):
     """
     Get a specific work hours record by ID
@@ -105,7 +105,7 @@ def create_work_hours(work_hours: WorkHoursCreate, db: Session = Depends(get_db)
     return db_work_hours
 
 
-@router.put("/{record_id}", response_model=WorkHoursSchema)
+@router.put("/{record_id}/", response_model=WorkHoursSchema)
 def update_work_hours(
     record_id: int,
     work_hours_update: WorkHoursUpdate,
@@ -137,7 +137,7 @@ def update_work_hours(
     return db_work_hours
 
 
-@router.delete("/{record_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{record_id}/", status_code=status.HTTP_204_NO_CONTENT)
 def delete_work_hours(record_id: int, db: Session = Depends(get_db)):
     """
     Delete a work hours record
@@ -158,7 +158,7 @@ def delete_work_hours(record_id: int, db: Session = Depends(get_db)):
     return None
 
 
-@router.post("/{record_id}/approve", response_model=WorkHoursSchema)
+@router.post("/{record_id}/approve/", response_model=WorkHoursSchema)
 def approve_work_hours(
     record_id: int,
     approved_by: str,
@@ -187,7 +187,7 @@ def approve_work_hours(
     return db_work_hours
 
 
-@router.post("/bulk-approve")
+@router.post("/bulk-approve/")
 def bulk_approve_work_hours(
     record_ids: List[int],
     approved_by: str,
