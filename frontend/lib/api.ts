@@ -107,7 +107,7 @@ export const workHoursApi = {
     api.delete(`/work-hours/${id}/`),
   
   approve: (id: number, approvedBy: string) => 
-    api.post<WorkHours>(`/work-hours/${id}/approve/?approved_by=${approvedBy}`),
+    api.post<WorkHours>(`/work-hours/${id}/approve?approved_by=${approvedBy}`),
   
   bulkApprove: (recordIds: number[], approvedBy: string) => 
     api.post('/work-hours/bulk-approve/', null, {
@@ -150,7 +150,7 @@ export const payRunApi = {
     }),
   
   getDashboard: (startPeriod: string, endPeriod: string) => 
-    api.get<PayrollDashboard>('/pay-runs/summary/dashboard/', {
+    api.get<PayrollDashboard>('/pay-runs/summary/dashboard', {
       params: { start_period: startPeriod, end_period: endPeriod },
     }),
 };
