@@ -36,7 +36,7 @@ def get_employees(
     return employees
 
 
-@router.get("/{employee_id}", response_model=EmployeeSchema)
+@router.get("/{employee_id}/", response_model=EmployeeSchema)
 def get_employee(employee_id: int, db: Session = Depends(get_db)):
     """
     Get a specific employee by ID
@@ -81,7 +81,7 @@ def create_employee(employee: EmployeeCreate, db: Session = Depends(get_db)):
     return db_employee
 
 
-@router.put("/{employee_id}", response_model=EmployeeSchema)
+@router.put("/{employee_id}/", response_model=EmployeeSchema)
 def update_employee(
     employee_id: int,
     employee_update: EmployeeUpdate,
@@ -125,7 +125,7 @@ def update_employee(
     return db_employee
 
 
-@router.delete("/{employee_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{employee_id}/", status_code=status.HTTP_204_NO_CONTENT)
 def delete_employee(employee_id: int, db: Session = Depends(get_db)):
     """
     Delete an employee (soft delete by setting status to inactive)
