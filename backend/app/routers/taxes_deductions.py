@@ -33,7 +33,7 @@ def get_tax_profiles(
     return profiles
 
 
-@router.get("/{profile_id}", response_model=TaxDeductionProfileSchema)
+@router.get("/{profile_id}/", response_model=TaxDeductionProfileSchema)
 def get_tax_profile(profile_id: int, db: Session = Depends(get_db)):
     """
     Get a specific tax/deduction profile by ID
@@ -85,7 +85,7 @@ def create_tax_profile(
     return db_profile
 
 
-@router.put("/{profile_id}", response_model=TaxDeductionProfileSchema)
+@router.put("/{profile_id}/", response_model=TaxDeductionProfileSchema)
 def update_tax_profile(
     profile_id: int,
     profile_update: TaxDeductionProfileUpdate,
@@ -131,7 +131,7 @@ def update_tax_profile(
     return db_profile
 
 
-@router.delete("/{profile_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{profile_id}/", status_code=status.HTTP_204_NO_CONTENT)
 def delete_tax_profile(profile_id: int, db: Session = Depends(get_db)):
     """
     Delete a tax/deduction profile
