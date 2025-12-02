@@ -150,7 +150,7 @@ export const payRunApi = {
     }),
   
   getDashboard: (startPeriod: string, endPeriod: string) => 
-    api.get<PayrollDashboard>('/pay-runs/summary/dashboard', {
+    api.get<PayrollDashboard>('/pay-runs/summary/dashboard/', {
       params: { start_period: startPeriod, end_period: endPeriod },
     }),
 };

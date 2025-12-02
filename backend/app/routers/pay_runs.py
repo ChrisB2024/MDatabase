@@ -240,7 +240,7 @@ def approve_pay_runs(bulk_update: BulkPaymentUpdate, db: Session = Depends(get_d
         )
 
 
-@router.get("/summary/dashboard")
+@router.get("/summary/dashboard/")
 def get_payroll_dashboard(
     start_period: date = Query(...),
     end_period: date = Query(...),
