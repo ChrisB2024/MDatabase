@@ -63,22 +63,22 @@ api.interceptors.response.use(
 
 export const employeeApi = {
   getAll: (params?: { skip?: number; limit?: number; status?: string }) => 
-    api.get<Employee[]>('/employees', { params }),
+    api.get<Employee[]>('/employees/', { params }),
   
   getById: (id: number) => 
-    api.get<Employee>(`/employees/${id}`),
+    api.get<Employee>(`/employees/${id}/`),
   
   create: (data: EmployeeCreate) => 
-    api.post<Employee>('/employees', data),
+    api.post<Employee>('/employees/', data),
   
   update: (id: number, data: Partial<EmployeeCreate>) => 
-    api.put<Employee>(`/employees/${id}`, data),
+    api.put<Employee>(`/employees/${id}/`, data),
   
   delete: (id: number) => 
-    api.delete(`/employees/${id}`),
+    api.delete(`/employees/${id}/`),
   
   getSummary: (id: number) => 
-    api.get(`/employees/${id}/summary`),
+    api.get(`/employees/${id}/summary/`),
 };
 
 // ==================== Work Hours API ====================
@@ -92,25 +92,25 @@ export const workHoursApi = {
     skip?: number;
     limit?: number;
   }) => 
-    api.get<WorkHours[]>('/work-hours', { params }),
+    api.get<WorkHours[]>('/work-hours/', { params }),
   
   getById: (id: number) => 
-    api.get<WorkHours>(`/work-hours/${id}`),
+    api.get<WorkHours>(`/work-hours/${id}/`),
   
   create: (data: WorkHoursCreate) => 
-    api.post<WorkHours>('/work-hours', data),
+    api.post<WorkHours>('/work-hours/', data),
   
   update: (id: number, data: Partial<WorkHoursCreate>) => 
-    api.put<WorkHours>(`/work-hours/${id}`, data),
+    api.put<WorkHours>(`/work-hours/${id}/`, data),
   
   delete: (id: number) => 
-    api.delete(`/work-hours/${id}`),
+    api.delete(`/work-hours/${id}/`),
   
   approve: (id: number, approvedBy: string) => 
-    api.post<WorkHours>(`/work-hours/${id}/approve?approved_by=${approvedBy}`),
+    api.post<WorkHours>(`/work-hours/${id}/approve/?approved_by=${approvedBy}`),
   
   bulkApprove: (recordIds: number[], approvedBy: string) => 
-    api.post('/work-hours/bulk-approve', null, {
+    api.post('/work-hours/bulk-approve/', null, {
       params: { record_ids: recordIds, approved_by: approvedBy },
     }),
 };
@@ -126,31 +126,31 @@ export const payRunApi = {
     skip?: number;
     limit?: number;
   }) => 
-    api.get<PayRun[]>('/pay-runs', { params }),
+    api.get<PayRun[]>('/pay-runs/', { params }),
   
   getById: (id: number) => 
-    api.get<PayRun>(`/pay-runs/${id}`),
+    api.get<PayRun>(`/pay-runs/${id}/`),
   
   create: (data: PayRunCreate) => 
-    api.post<PayRun>('/pay-runs', data),
+    api.post<PayRun>('/pay-runs/', data),
   
   update: (id: number, data: Partial<PayRunCreate>) => 
-    api.put<PayRun>(`/pay-runs/${id}`, data),
+    api.put<PayRun>(`/pay-runs/${id}/`, data),
   
   delete: (id: number) => 
-    api.delete(`/pay-runs/${id}`),
+    api.delete(`/pay-runs/${id}/`),
   
   recalculate: (id: number) => 
-    api.post<PayRun>(`/pay-runs/${id}/recalculate`),
+    api.post<PayRun>(`/pay-runs/${id}/recalculate/`),
   
   approve: (payRunIds: number[]) => 
-    api.post<PayRun[]>('/pay-runs/approve', {
+    api.post<PayRun[]>('/pay-runs/approve/', {
       pay_run_ids: payRunIds,
       payment_status: 'paid',
     }),
   
   getDashboard: (startPeriod: string, endPeriod: string) => 
-    api.get<PayrollDashboard>('/pay-runs/summary/dashboard', {
+    api.get<PayrollDashboard>('/pay-runs/summary/dashboard/', {
       params: { start_period: startPeriod, end_period: endPeriod },
     }),
 };
@@ -159,19 +159,19 @@ export const payRunApi = {
 
 export const taxProfileApi = {
   getAll: (params?: { skip?: number; limit?: number }) => 
-    api.get<TaxDeductionProfile[]>('/taxes-deductions', { params }),
+    api.get<TaxDeductionProfile[]>('/taxes-deductions/', { params }),
   
   getById: (id: number) => 
-    api.get<TaxDeductionProfile>(`/taxes-deductions/${id}`),
+    api.get<TaxDeductionProfile>(`/taxes-deductions/${id}/`),
   
   create: (data: Partial<TaxDeductionProfile>) => 
-    api.post<TaxDeductionProfile>('/taxes-deductions', data),
+    api.post<TaxDeductionProfile>('/taxes-deductions/', data),
   
   update: (id: number, data: Partial<TaxDeductionProfile>) => 
-    api.put<TaxDeductionProfile>(`/taxes-deductions/${id}`, data),
+    api.put<TaxDeductionProfile>(`/taxes-deductions/${id}/`, data),
   
   delete: (id: number) => 
-    api.delete(`/taxes-deductions/${id}`),
+    api.delete(`/taxes-deductions/${id}/`),
 };
 
 // SWR fetcher function
